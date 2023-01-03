@@ -1,0 +1,12 @@
+.container{
+      padding: 0 30px;
+}
+
+.card{
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--cardGray);
+    text-align: center;
+    padding: 1.7em 0;
+   position: relative;
+}
