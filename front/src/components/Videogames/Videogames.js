@@ -1,18 +1,14 @@
 import { useEffect} from "react" // Similar to componentDidMount + componentDidUpdate:
 import VideoGame from "../Videogame/Videogame"
 import { getAllGames, getGenres } from "../../redux/actions/actions"
-import {useSelector, useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { Link } from "react-router-dom"
 import styles from './Videogames.module.css'
 
 
- function VideoGames (){
+ function VideoGames ({actualVideogame}){
     const dispatch = useDispatch()
-    const showVideogames = useSelector(state=> state.showVideogames)
-    const videogameDetail = useSelector(state=> state.videogameDetail)
-    const genreList = useSelector(state=>state.genreList)
-
-   
+       
     // You tell React that your component needs to do something after render.
     useEffect(()=>{
       dispatch(getAllGames())

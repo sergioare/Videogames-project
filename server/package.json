@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/sergioare/Proyecto-VideoGames#readme",
   "dependencies": {
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

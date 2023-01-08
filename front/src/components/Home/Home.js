@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SearchBar from '../SearchBar/SearchBar.js'
 import Filter from '../Filter/Filter.js'
@@ -33,7 +33,7 @@ const Home = () => {
     const paginate = pageNumber => setCurrentPage(pageNumber)
 
         if(allVideogames.length !== 0){
-            loading = false
+            loading= false
         }
 
     const pageNumbers =[]
@@ -125,9 +125,9 @@ const Home = () => {
                     <div className={styles.header}>
 
                         <img 
-                        className={styles.headerImage} 
-                        src={headerImage}
-                        alt='background header image'
+                            className={styles.headerImage} 
+                            src={headerImage}
+                            alt='background header'
                         />
 
                         <h1>VIDEOGAMES HOME</h1>
@@ -180,7 +180,8 @@ const Home = () => {
                         <div className={styles.containerGames}>
                             { loading
                                 ? <Loading />
-                                : <Videogames />                             
+                                : <Videogames  
+                                    actualVideogame={actualVideogame}/>                             
                             }
                         </div>
 

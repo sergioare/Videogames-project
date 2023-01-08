@@ -24,7 +24,7 @@ server.use(genresRoutes);
 (async function seqSync(){
   try {
     sequelize
-      .sync()
+      .sync({force:false})
       .then(() => {
         console.log('Postgres sync has been established successfully.')
       })

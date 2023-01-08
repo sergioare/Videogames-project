@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, UUIDV4 } from 'sequelize';
 import {sequelize} from '../db/db.js';
 import {Videogame} from './Videogame.js';
 // Define the model (Genre) to initialized in our DB "VideoGames"
@@ -7,7 +7,7 @@ export const Genre = sequelize.define('genre',{
 
   id: {
     type: DataTypes.INTEGER,
-    autoIncrement: true, 
+    autoIncrement: true,
     primaryKey: true
   },
   name: {

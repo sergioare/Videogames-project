@@ -49,7 +49,7 @@ export const getGameById = async (req, res)=>{
 
 export const createGame = async (req, res)=>{
     try {
-        let{
+        const {
             name,
             description,
             rating,
@@ -59,7 +59,7 @@ export const createGame = async (req, res)=>{
             released
         }= req.body
 
-        let newVideogame = await Videogame.create({
+        const newVideogame = await Videogame.create({
             name,
             description,
             released,
@@ -68,7 +68,7 @@ export const createGame = async (req, res)=>{
             image,
         });
 
-        let genreDB= await Genre.findAll({
+        const genreDB= await Genre.findAll({
             where: {name: genre},
         });
 
@@ -80,7 +80,7 @@ export const createGame = async (req, res)=>{
     }
 }
 export const updateGame = async (req, res)=>{
-    const {id} =req.params;
+    const {id} =req.params
     const{name,
         description,
         rating,
@@ -91,10 +91,11 @@ export const updateGame = async (req, res)=>{
     }= req.body;
     try {
         const game = await putGame(id, name,description, rating, platforms, genre, image, released)
+        
         if(game){
             res.status(200).json(game);
         }else{
-            return res.status(404).json({ message: 'Videogame not found' });
+            return res.status(404).json({ message: 'Videogame not found hereeeee' });
         }
 
     } catch (error) {

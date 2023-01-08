@@ -73,6 +73,7 @@ const getDbGames = async ()=>{
 };
 
 export const putGame = async(
+    id,
     name,
     description,
     rating,
@@ -81,7 +82,21 @@ export const putGame = async(
     image,
     released)=>{
         try {
-            const game = await Videogame.findByPk(id)
+            // const game = await Videogame.findOne({
+            //     where:{id:id}
+            // });
+            // game.name = name;
+            // game.description = description;
+            // game.rating = rating;
+            // game.platforms = platforms;
+            // game.image = image;
+            // game.released = released;
+
+            // await game.save()
+
+            const game = await Videogame.findOne({
+                where: {
+                  id: id}})
             if (game) {
                 await game.update({
                     name,
@@ -89,19 +104,20 @@ export const putGame = async(
                     rating,
                     platforms,
                     image,
-                    released
-                },
-                {where:{id:id}})
+                    released,
+                    genre,
+                })
 
+                
                 const genreDB = await Genre.findAll({
                     where:{
                         name:genre}
-                })
-
-                await game.setGenres([]);
-                res.status(200).send('Videogame was successfully changed');
+                });
+              await game.addGenres(genreDB);
+              return game;
+            }else{
+                return { error: 'Videogame not found' };
             }
-            return { error: 'Videogame not found' };
         } catch (error) {
             return { error: error.message };
         }
